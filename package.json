@@ -42,7 +42,7 @@
     "react-dropzone": "^14.2.3",
     "react-icons": "^5.0.0",
     "ts-essentials": "^10.0.0",
-    "uuid": "^10.0.0",
+    "uuid": "^14.0.0",
     "xlsx-ugnis": "^0.20.3"
   },
   "devDependencies": {
