@@ -1,0 +1,90 @@
+import type React from "react"
+import type { Column, Columns } from "../types"
+import { Box, Flex, Heading, Dialog, Text } from "@chakra-ui/react"
+import { FadingWrapper } from "../../../components/FadingWrapper"
+import { ContinueButton } from "../../../components/ContinueButton"
+import { useRsi } from "../../../hooks/useRsi"
+
+interface ColumnGridProps<T extends string> {
+  columns: Columns<T>
+  userColumn: (column: Column<T>) => React.ReactNode
+  templateColumn: (column: Column<T>) => React.ReactNode
+  onContinue: (val: Record<string, string>[]) => void
+  onBack?: () => void
+  isLoading: boolean
+}
+
+export const ColumnGrid = <T extends string = string>({
+  columns,
+  userColumn,
+  templateColumn,
+  onContinue,
+  onBack,
+  isLoading,
+}: ColumnGridProps<T>) => {
+  const { translations } = useRsi()
+
+  return (
+    <>
+      <Dialog.Body flexDir="column" p={8} overflow="auto" h="100%">
+        <Heading fontSize="3xl" mb="2rem">
+          {translations.matchColumnsStep.title}
+        </Heading>
+        <Flex
+          flex={1}
+          display="grid"
+          gridTemplateRows="auto auto auto 1fr"
+          gridTemplateColumns={`0.75rem repeat(${columns.length.toString()}, minmax(18rem, auto)) 0.75rem`}
+        >
+          <Box gridColumn={`1/${(columns.length + 3).toString()}`}>
+            <Text color="textColor" fontSize="2xl" fontWeight="semibold" mb="4">
+              {translations.matchColumnsStep.userTableTitle}
+            </Text>
+          </Box>
+          {columns.map((column, index) => (
+            <Box
+              gridRow="2/3"
+              gridColumn={`${(index + 2).toString()}/${(index + 3).toString()}`}
+              pt={3}
+              key={column.header + index.toString()}
+            >
+              {userColumn(column)}
+            </Box>
+          ))}
+          <FadingWrapper
+            gridColumn={`1/${(columns.length + 3).toString()}`}
+            gridRow="2/3"
+          />
+          <Box gridColumn={`1/${(columns.length + 3).toString()}`} mt={7}>
+            <Text color="textColor" fontSize="2xl" fontWeight="semibold" mb="4">
+              {translations.matchColumnsStep.templateTitle}
+            </Text>
+          </Box>
+          <FadingWrapper
+            gridColumn={`1/${(columns.length + 3).toString()}`}
+            gridRow="4/5"
+          />
+          {columns.map((column, index) => (
+            <Box
+              gridRow="4/5"
+              gridColumn={`${(index + 2).toString()}/${(index + 3).toString()}`}
+              key={column.header + index.toString()}
+              py="1.125rem"
+              pl={2}
+              pr={3}
+            >
+              {templateColumn(column)}
+            </Box>
+          ))}
+        </Flex>
+      </Dialog.Body>
+      <ContinueButton
+        isLoading={isLoading}
+        onContinue={onContinue}
+        onBack={onBack}
+        title={translations.matchColumnsStep.nextButtonTitle}
+        backTitle={translations.matchColumnsStep.backButtonTitle}
+      />
+    </>
+  )
+}

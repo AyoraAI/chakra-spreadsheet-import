@@ -1,0 +1,522 @@
+/* Scoped React Data Grid styles - only affects elements within .rdg containers */
+
+@layer rdg {
+  @layer Defaults,
+      FocusSink,
+      CheckboxInput,
+      CheckboxIcon,
+      CheckboxLabel,
+      Cell,
+      HeaderCell,
+      SummaryCell,
+      EditCell,
+      Row,
+      HeaderRow,
+      SummaryRow,
+      GroupedRow,
+      Root;
+}
+
+/* Scope all styles to react-data-grid containers */
+.rdg,
+[class*="rdg-"],
+[data-testid*="grid"] {
+  /* Measuring Cell */
+  .mlln6zg7-0-0-beta-57 {
+    @layer rdg.MeasuringCell {
+      contain: strict;
+      grid-row: 1;
+      visibility: hidden;
+    }
+  }
+
+  /* Cell Styles */
+  .cj343x07-0-0-beta-57 {
+    @layer rdg.Cell {
+      contain: strict;
+      position: relative;
+      padding-block: 0;
+      padding-inline: 8px !important;
+      border-right: none;
+      border-inline-end: none;
+      border-bottom: 1px solid var(--rdg-border-color);
+      grid-row-start: var(--rdg-grid-row-start);
+      align-content: center;
+      background-color: inherit;
+
+      white-space: nowrap;
+      overflow: clip;
+      text-overflow: ellipsis;
+      outline: none;
+
+      &[aria-selected="true"] {
+        box-shadow: inset 0 0 0 1px var(--rdg-selection-color);
+      }
+    }
+
+    &:first-of-type {
+      box-shadow: none;
+      border-inline-start: 1px solid var(--rdg-border-color);
+    }
+
+    &:last-child {
+      border-inline-end: 1px solid var(--rdg-border-color);
+    }
+  }
+
+  .csofj7r7-0-0-beta-57 {
+    @layer rdg.Cell {
+      position: sticky;
+      z-index: 1;
+
+      &:nth-last-child(1 of &) {
+        box-shadow: var(--rdg-cell-frozen-box-shadow);
+      }
+    }
+  }
+
+  /* Drag Handle */
+  .ch2wcw87-0-0-beta-57 {
+    @layer rdg.DragHandle {
+      --rdg-drag-handle-size: 8px;
+      z-index: 0;
+      cursor: move;
+      inline-size: var(--rdg-drag-handle-size);
+      block-size: var(--rdg-drag-handle-size);
+      background-color: var(--rdg-selection-color);
+      place-self: end;
+
+      &:hover {
+        --rdg-drag-handle-size: 16px;
+        border: 2px solid var(--rdg-selection-color);
+        background-color: var(--rdg-background-color);
+      }
+    }
+  }
+
+  .c1wvphzh7-0-0-beta-57 {
+    @layer rdg.DragHandle {
+      z-index: 1;
+      position: sticky;
+    }
+  }
+
+  /* Checkbox Input */
+  .c1bn88vv7-0-0-beta-57 {
+    @layer rdg.CheckboxInput {
+      display: block;
+      margin: auto;
+      inline-size: 20px;
+      block-size: 20px;
+
+      &:focus-visible {
+        outline: 2px solid var(--rdg-checkbox-focus-color);
+        outline-offset: -3px;
+      }
+
+      &:enabled {
+        cursor: pointer;
+      }
+    }
+  }
+
+  /* Group Cell Content */
+  .g1s9ylgp7-0-0-beta-57 {
+    @layer rdg.GroupCellContent {
+      outline: none;
+    }
+  }
+
+  .cz54e4y7-0-0-beta-57 {
+    @layer rdg.GroupCellCaret {
+      margin-inline-start: 4px;
+      stroke: currentColor;
+      stroke-width: 1.5px;
+      fill: transparent;
+      vertical-align: middle;
+
+      > path {
+        transition: d 0.1s;
+      }
+    }
+  }
+
+  /* Sortable Header Cell */
+  .h44jtk67-0-0-beta-57 {
+    @layer rdg.SortableHeaderCell {
+      display: flex;
+    }
+  }
+
+  .hcgkhxz7-0-0-beta-57 {
+    @layer rdg.SortableHeaderCellName {
+      flex-grow: 1;
+      overflow: clip;
+      text-overflow: ellipsis;
+    }
+  }
+
+  /* Cell Background */
+  .c6ra8a37-0-0-beta-57 {
+    @layer rdg.Cell {
+      background-color: var(--chakra-colors-primary-50);
+    }
+  }
+
+  /* Edit Cell */
+  .cis5rrm7-0-0-beta-57 {
+    @layer rdg.EditCell {
+      padding: 0;
+    }
+  }
+
+  /* Header Cell */
+  .c6l2wv17-0-0-beta-57 {
+    @layer rdg.HeaderCell {
+      cursor: pointer;
+    }
+  }
+
+  .c1kqdw7y7-0-0-beta-57 {
+    @layer rdg.HeaderCell {
+      touch-action: none;
+    }
+  }
+
+  .r1y6ywlx7-0-0-beta-57 {
+    @layer rdg.HeaderCell {
+      cursor: col-resize;
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-end: 0;
+      inset-block-end: 0;
+      inline-size: 10px;
+    }
+  }
+
+  .c1bezg5o7-0-0-beta-57 {
+    @layer rdg.HeaderCell {
+      background-color: var(--rdg-header-draggable-background-color);
+    }
+  }
+
+  .c1vc96037-0-0-beta-57 {
+    @layer rdg.HeaderCell {
+      background-color: var(--rdg-header-draggable-background-color);
+    }
+  }
+
+  .d8rwc9w7-0-0-beta-57 {
+    @layer rdg.HeaderCell {
+      width: fit-content;
+      outline: 2px solid var(--chakra-colors-primary-500);
+      outline-offset: -2px;
+    }
+  }
+
+  /* Row */
+  .r1upfr807-0-0-beta-57 {
+    @layer rdg.Row {
+      display: contents;
+      background-color: var(--rdg-background-color);
+
+      &:hover {
+        background-color: var(--rdg-row-hover-background-color);
+      }
+
+      &[aria-selected="true"] {
+        background-color: var(--rdg-row-selected-background-color);
+
+        &:hover {
+          background-color: var(--rdg-row-selected-hover-background-color);
+        }
+      }
+    }
+  }
+
+  /* Focus Sink */
+  .r190mhd37-0-0-beta-57 {
+    @layer rdg.FocusSink {
+      outline: 2px solid var(--rdg-selection-color);
+      outline-offset: -2px;
+    }
+  }
+
+  .r139qu9m7-0-0-beta-57 {
+    @layer rdg.FocusSink {
+      &::before {
+        content: "";
+        display: inline-block;
+        block-size: 100%;
+        position: sticky;
+        inset-inline-start: 0;
+        border-inline-start: 2px solid var(--rdg-selection-color);
+      }
+    }
+  }
+
+  /* Header Row */
+  .h10tskcx7-0-0-beta-57 {
+    @layer rdg.HeaderRow {
+      display: contents;
+      background-color: var(--chakra-colors-primary-50);
+      font-weight: 700 !important;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+
+      & > .cj343x07-0-0-beta-57 {
+        z-index: 2;
+        position: sticky;
+      }
+
+      & > .csofj7r7-0-0-beta-57 {
+        z-index: 3;
+      }
+
+      &:first-of-type {
+        border-top-left-radius: var(--chakra-radii-lg) !important;
+      }
+
+      &:last-child {
+        border-top-right-radius: var(--chakra-radii-lg) !important;
+      }
+    }
+  }
+
+  /* Sort Icon */
+  .a3ejtar7-0-0-beta-57 {
+    @layer rdg.SortIcon {
+      fill: currentColor;
+
+      > path {
+        transition: d 0.1s;
+      }
+    }
+  }
+
+  /* Focus Sink Additional */
+  .f1lsfrzw7-0-0-beta-57 {
+    @layer rdg.FocusSink {
+      grid-column: 1/-1;
+      pointer-events: none;
+      z-index: 1;
+    }
+  }
+
+  .f1cte0lg7-0-0-beta-57 {
+    @layer rdg.FocusSink {
+      z-index: 3;
+    }
+  }
+
+  /* Summary Cell */
+  .s8wc6fl7-0-0-beta-57 {
+    @layer rdg.SummaryCell {
+      inset-block-start: var(--rdg-summary-row-top);
+      inset-block-end: var(--rdg-summary-row-bottom);
+    }
+  }
+
+  /* Summary Row */
+  .skuhp557-0-0-beta-57 {
+    @layer rdg.SummaryRow {
+      > .cj343x07-0-0-beta-57 {
+        position: sticky;
+      }
+    }
+  }
+
+  .tf8l5ub7-0-0-beta-57 {
+    @layer rdg.SummaryRow {
+      > .cj343x07-0-0-beta-57 {
+        z-index: 2;
+      }
+
+      > .csofj7r7-0-0-beta-57 {
+        z-index: 3;
+      }
+    }
+  }
+
+  /* Grouped Row */
+  .g1yxluv37-0-0-beta-57 {
+    @layer rdg.GroupedRow {
+      &:not([aria-selected="true"]) {
+        background-color: var(--rdg-header-background-color);
+      }
+
+      > .cj343x07-0-0-beta-57:not(:last-child, .csofj7r7-0-0-beta-57),
+      > :nth-last-child(n + 2 of .csofj7r7-0-0-beta-57) {
+        border-inline-end: none;
+      }
+    }
+  }
+
+  /* Text Editor */
+  .t7vyx3i7-0-0-beta-57 {
+    @layer rdg.TextEditor {
+      appearance: none;
+      box-sizing: border-box;
+      inline-size: 100%;
+      block-size: 100%;
+      padding-block: 0;
+      padding-inline: 6px;
+      border: 2px solid #ccc;
+      vertical-align: top;
+      color: var(--rdg-color);
+      background-color: var(--rdg-background-color);
+      font-family: inherit;
+      font-size: var(--rdg-font-size);
+
+      &:focus {
+        border-color: var(--rdg-selection-color);
+        outline: none;
+      }
+
+      &::placeholder {
+        color: #999;
+        opacity: 1;
+      }
+    }
+  }
+
+  /* Dragging state */
+  &.vlqv91k7-0-0-beta-57 {
+    @layer rdg.Root {
+      user-select: none;
+
+      & .r1upfr807-0-0-beta-57 {
+        cursor: move;
+      }
+    }
+  }
+}
+
+/* Root Grid Container - This is the main react-data-grid container */
+.rdg.rnvodz57-0-0-beta-57,
+.rnvodz57-0-0-beta-57 {
+  @layer rdg.Defaults {
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+  }
+
+  @layer rdg.Root {
+    --rdg-row-height: 35px;
+    --rdg-selection-width: 2px;
+    --rdg-selection-color: var(--chakra-colors-primary-500);
+    --rdg-font-size: var(--chakra-fontSizes-sm);
+    --rdg-cell-frozen-box-shadow: 2px 0 5px -2px rgba(136, 136, 136, 0.3);
+    --rdg-border-width: 1px;
+    --rdg-summary-border-width: calc(var(--rdg-border-width) * 2);
+    --rdg-color: var(--chakra-colors-textColor);
+    --rdg-border-color: var(--chakra-colors-border);
+    --rdg-summary-border-color: var(--chakra-colors-border);
+    --rdg-background-color: var(--chakra-colors-background);
+    --rdg-header-background-color: var(--chakra-colors-background);
+    --rdg-header-draggable-background-color: var(--chakra-colors-background);
+    --rdg-row-hover-background-color: var(--chakra-colors-background);
+    --rdg-row-selected-background-color: var(--chakra-colors-primary-200);
+    --rdg-row-selected-hover-background-color: var(--chakra-colors-primary-300);
+    --rdg-checkbox-focus-color: var(--chakra-colors-primary-500);
+    --rdg-error-cell-background-color: var(--chakra-colors-red-50);
+    --rdg-warning-cell-background-color: var(--chakra-colors-orange-50);
+    --rdg-info-cell-background-color: var(--chakra-colors-blue-50);
+
+    &.rdg-dark {
+      --rdg-color-scheme: dark;
+
+      /* Dark mode header row background */
+      .h10tskcx7-0-0-beta-57 {
+        background-color: var(--chakra-colors-gray-800) !important;
+      }
+
+      .rdg-row-even {
+        background-color: var(--chakra-colors-primary-800) !important;
+      }
+    }
+
+    &.rdg-light {
+      --rdg-color-scheme: light;
+    }
+
+    color-scheme: var(--rdg-color-scheme, light dark);
+
+    &:dir(rtl) {
+      --rdg-cell-frozen-box-shadow: -2px 0 5px -2px rgba(136, 136, 136, 0.3);
+    }
+
+    display: grid;
+    accent-color: light-dark(hsl(207deg 100% 29%), hsl(207deg 100% 79%));
+    contain: size layout style paint;
+    content-visibility: auto;
+    block-size: 100% !important;
+    flex: 1;
+    border: none;
+    border-top: 1px solid var(--rdg-border-color) !important;
+    border-radius: var(--chakra-radii-lg);
+    box-sizing: border-box;
+    overflow: auto;
+    background-color: var(--rdg-background-color);
+    color: var(--rdg-color);
+    font-size: var(--rdg-font-size);
+
+    /* Firefox scrollbar fix */
+    &::before {
+      content: "";
+      grid-column: 1/-1;
+      grid-row: 1/-1;
+    }
+
+    > :nth-last-child(1 of .rdg-top-summary-row) {
+      > .cj343x07-0-0-beta-57 {
+        border-block-end: var(--rdg-summary-border-width) solid
+          var(--rdg-summary-border-color);
+      }
+    }
+
+    > :nth-child(1 of .rdg-bottom-summary-row) {
+      > .cj343x07-0-0-beta-57 {
+        border-block-start: var(--rdg-summary-border-width) solid
+          var(--rdg-summary-border-color);
+      }
+    }
+  }
+}
+
+.rdg-example .rdg-cell {
+  --rdg-selection-color: none !important;
+  border-bottom: none !important;
+}
+
+.rdg-static {
+  cursor: pointer;
+}
+
+.rdg-static .rdg-header-row {
+  display: none;
+}
+
+.rdg-static .rdg-cell {
+  --rdg-selection-color: none;
+}
+
+.rdg-checkbox {
+  --rdg-selection-color: none;
+  display: flex;
+  align-items: center;
+}
+
+.rdg-cell-error {
+  background-color: var(--rdg-error-cell-background-color) !important;
+}
+
+.rdg-cell-warning {
+  background-color: var(--rdg-warning-cell-background-color) !important;
+}
+
+.rdg-cell-info {
+  background-color: var(--rdg-info-cell-background-color) !important;
+}

@@ -1,0 +1,59 @@
+{
+  "name": "chakra-spreadsheet-import",
+  "version": "0.1.0",
+  "description": "Spreadsheet import flow (Excel/CSV) with column matching and validation. Forked from react-spreadsheet-import (MIT).",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./index.css": "./dist/index.css"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup && cp src/index.css dist/index.css",
+    "prepack": "yarn build"
+  },
+  "peerDependencies": {
+    "@chakra-ui/react": "^3.30.0",
+    "@emotion/react": "^11.0.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.1.3",
+    "chakra-react-select": "^6.0.0",
+    "js-levenshtein": "^1.1.6",
+    "lodash": "^4.17.21",
+    "react-data-grid": "7.0.0-beta.57",
+    "react-dropzone": "^14.2.3",
+    "react-icons": "^5.0.0",
+    "ts-essentials": "^10.0.0",
+    "uuid": "^10.0.0",
+    "xlsx-ugnis": "^0.20.3"
+  },
+  "devDependencies": {
+    "@chakra-ui/react": "^3.30.0",
+    "@emotion/react": "^11.0.0",
+    "@types/lodash": "^4.17.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.6.0"
+  }
+}
