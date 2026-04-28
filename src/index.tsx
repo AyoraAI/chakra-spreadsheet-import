@@ -1,4 +1,4 @@
-import merge from "lodash/merge"
+import merge from "lodash/merge.js"
 
 import { Steps } from "./steps/Steps"
 import { Providers } from "./components/Providers"

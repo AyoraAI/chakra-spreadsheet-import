@@ -1,4 +1,4 @@
-import merge from 'lodash/merge';
+import merge from 'lodash/merge.js';
 import * as React from 'react';
 import { createContext, useState, useRef, useContext, useCallback, useMemo, useEffect, useSyncExternalStore } from 'react';
 import { createToaster, Tooltip, Portal, Toaster, Toast, Spinner, Stack, Dialog, Steps as Steps$1, CloseButton, Progress, Button, Box, Heading, Switch, RadioGroup, Flex, Text, Checkbox, Input, Accordion, IconButton } from '@chakra-ui/react';
@@ -9,7 +9,7 @@ import { useRowSelection, DataGrid } from 'react-data-grid';
 import { CgInfo, CgUndo, CgClose, CgCheck } from 'react-icons/cg';
 import { v4 } from 'uuid';
 import { Select } from 'chakra-react-select';
-import uniqBy from 'lodash/uniqBy';
+import uniqBy from 'lodash/uniqBy.js';
 import lavenstein from 'js-levenshtein';
 import { CheckIcon } from '@heroicons/react/24/outline';
 

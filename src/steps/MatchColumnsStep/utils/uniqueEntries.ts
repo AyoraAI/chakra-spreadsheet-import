@@ -1,4 +1,4 @@
-import uniqBy from "lodash/uniqBy"
+import uniqBy from "lodash/uniqBy.js"
 import type { MatchColumnsProps, MatchedOptions } from "../types"
 
 export const uniqueEntries = <T extends string>(
