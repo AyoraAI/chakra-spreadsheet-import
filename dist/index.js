@@ -35,7 +35,10 @@ var Providers = ({
 };
 
 // src/hooks/useRsi.ts
-var useRsi = () => useContext(RsiContext);
+var useRsi = () => (
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  useContext(RsiContext)
+);
 
 // src/steps/UploadStep/utils/readFilesAsync.ts
 var readFileAsync = (file) => {
